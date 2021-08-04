@@ -1,0 +1,66 @@
+Evergage.init({
+    cookieDomain: "qaunified.pepper.money"
+}).then(() => {
+    const config = {
+        global: {
+        },
+        pageTypeDefault: {
+            name: "default"
+        },
+        pageTypes: [
+
+            {
+                name: "home",
+                action: "Homepage",
+                                isMatch: () => {
+                    return window.location.pathname === "/";
+                }
+            },
+
+            {
+                name: "residential_mortgage_products",
+                action: "Resdidential Mortgage Products",
+                isMatch: () => \/intermediary\/residential-mortgage-products.test(window.location.href)
+            }, 
+
+            {
+                name: "residential_mortgage_criteria",
+                action: "Residential Mortgage Criteria/",
+                isMatch: () => \/intermediary\/residential-mortgage-criteria.test(window.location.href)
+                    
+            }, 
+
+            {
+                name: "buy_to_let_mortgage_products",
+                action: "Buy to Let Mortgage Products",
+                isMatch: () => /\intermediary\/buy-to-let-mortgage-products.test(window.location.href)
+            }, 
+
+            {
+                name: "buy_to_let_mortgage_criteria",
+                action: "Buy to Let Mortgage Criteria",
+                isMatch: () => \/intermediary\/buy-to-let-mortgage-criteria.test(window.location.href)
+            }, 
+
+            {
+                name: "ltd_company_buy_to_let_mortgage_products",
+                action: "Ltd Company Buy to Let Mortgage Products",
+                isMatch: () => \/intermediary\/limited-company-buy-to-let-mortgage-products/.test(window.location.href)
+            }, 
+
+            {
+                name: "ltd_company_buy_to_let_mortgage_criteria",
+                action: "Ltd Company Buy to Let Mortgage Criteria",
+                isMatch: () => \/intermediary\/limited-company-buy-to-let-mortgage-criteria.test(window.location.href)
+            },
+
+            {
+                name: "knowledge_centre",
+                action: "Knowledge Centre",
+                isMatch: () => intermediary\/knowledge-centre\/.test(window.location.pathname)
+            }
+
+        ]
+    };
+    Evergage.initSitemap(config);
+});
