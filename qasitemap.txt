@@ -2,13 +2,6 @@ Evergage.init({
     cookieDomain: "qa.pepper.money"
 }).then(() => {
     const config = {
-        global: {
-        },
-        pageTypeDefault: {
-            name: "default"
-        },
-        
-        const config = {
         global:{
         listeners: [
                     Evergage.listener("submit", ".jet-form layout-column submit-type-reload", () => {
@@ -20,7 +13,10 @@ Evergage.init({
                     })
                 ]
         }
+        pageTypeDefault: {
+            name: "default"
         },
+
         
         pageTypes: [
 
