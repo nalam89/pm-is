@@ -11,7 +11,7 @@ Evergage.init({
         const config = {
         global:{
         listeners: [
-                    Evergage.listener("submit", "#6317", () => {
+                    Evergage.listener("submit", "jet-form layout-column submit-type-reload", () => {
                     const email = Evergage.cashDom("#broker_email").val();
                     const firstname = Evergage.cashDom("#broker_name").val();
                         if (email) {
