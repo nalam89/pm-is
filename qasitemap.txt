@@ -1,5 +1,5 @@
 Evergage.init({
-    cookieDomain: "qaunified.pepper.money"
+    cookieDomain: "qa.pepper.money"
 }).then(() => {
     const config = {
         global: {
@@ -7,6 +7,21 @@ Evergage.init({
         pageTypeDefault: {
             name: "default"
         },
+        
+        const config = {
+        global:{
+        listeners: [
+                    Evergage.listener("submit", "#6317", () => {
+                    const email = Evergage.cashDom("#broker_email").val();
+                    const firstname = Evergage.cashDom("#broker_name").val();
+                        if (email) {
+                            Evergage.sendEvent({ action: "CTA Submission Form", user: { attributes: {emailAddress: email,firstName: firstname} } });
+                        }
+                    })
+                ]
+        }
+        },
+        
         pageTypes: [
 
             {
@@ -20,44 +35,44 @@ Evergage.init({
             {
                 name: "residential_mortgage_products",
                 action: "Resdidential Mortgage Products",
-                isMatch: () => \/intermediary\/residential-mortgage-products.test(window.location.href)
+                isMatch: () => /\/intermediary\/residential-mortgage-products/.test(window.location.href)
             }, 
 
             {
                 name: "residential_mortgage_criteria",
                 action: "Residential Mortgage Criteria/",
-                isMatch: () => \/intermediary\/residential-mortgage-criteria.test(window.location.href)
+                isMatch: () => /\/intermediary\/residential-mortgage-criteria/.test(window.location.href)
                     
             }, 
 
             {
                 name: "buy_to_let_mortgage_products",
                 action: "Buy to Let Mortgage Products",
-                isMatch: () => /\intermediary\/buy-to-let-mortgage-products.test(window.location.href)
+                isMatch: () => /\/intermediary\/buy-to-let-mortgage-products/.test(window.location.href)
             }, 
 
             {
                 name: "buy_to_let_mortgage_criteria",
                 action: "Buy to Let Mortgage Criteria",
-                isMatch: () => \/intermediary\/buy-to-let-mortgage-criteria.test(window.location.href)
-            }, 
+                isMatch: () => /\/intermediary\/buy-to-let-mortgage-criteria/.test(window.location.href),
+            },
 
             {
                 name: "ltd_company_buy_to_let_mortgage_products",
                 action: "Ltd Company Buy to Let Mortgage Products",
-                isMatch: () => \/intermediary\/limited-company-buy-to-let-mortgage-products/.test(window.location.href)
+                isMatch: () => /\/intermediary\/limited-company-buy-to-let-mortgage-products/.test(window.location.href)
             }, 
 
             {
                 name: "ltd_company_buy_to_let_mortgage_criteria",
                 action: "Ltd Company Buy to Let Mortgage Criteria",
-                isMatch: () => \/intermediary\/limited-company-buy-to-let-mortgage-criteria.test(window.location.href)
+                isMatch: () => /\/intermediary\/limited-company-buy-to-let-mortgage-criteria/.test(window.location.href)
             },
 
             {
                 name: "knowledge_centre",
                 action: "Knowledge Centre",
-                isMatch: () => intermediary\/knowledge-centre\/.test(window.location.pathname)
+                isMatch: () => /\/intermediary\/knowledge-centre/.test(window.location.pathname)
             }
 
         ]
