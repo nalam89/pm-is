@@ -6,9 +6,10 @@ Evergage.init({
         listeners: [
                     Evergage.listener("submit", ".jet-form layout-column submit-type-reload", () => {
                     const email = Evergage.cashDom("#broker_email").val();
-                    const firstname = Evergage.cashDom("#broker_name").val();
+                    const firstname = Evergage.cashDom("#broker_first_name").val();
+                    const lastname = Evergage.cashDom("#broker_last_name").val();
                         if (email) {
-                            Evergage.sendEvent({ action: "CTA Submission Form", user: { attributes: {emailAddress: email,firstName: firstname} } });
+                            Evergage.sendEvent({ action: "CTA Submission Form", user: { attributes: {emailAddress: email,firstName: firstname, lastName: lastname} } });
                         }
                     })
                 ]
