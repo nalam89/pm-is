@@ -30,6 +30,42 @@ Evergage.init({
             },
 
             {
+                name: "btl_calculator",
+                action: "Buy To Let Calculator",
+                isMatch: () => /\/intermediary\/buy-to-let-calculator/.test(window.location.href),
+                listeners: [
+                    Evergage.listener("click", "#btn-calculate", () => {
+                    var ltdCompany = Evergage.cashDom("#limited-result").val();
+                    //var mortgageType = Evergage.cashDom("#").val();
+                    //var propertyValue = Evergage.cashDom("#broker_last_name").val();
+                    //var loanRequired = Evergage.cashDom("#required-loan-amount-result").val();
+                    var loanAmount = Evergage.cashDom("#required-loan-amount-result").val();
+                    //var loanToValue = Evergage.cashDom("#broker_last_name").val();
+                    var monthlyRentalIncome = Evergage.cashDom("#monthly-rental-result").val();
+                    var product = Evergage.cashDom("#product-result").val();
+                    var repaymentType = Evergage.cashDom("#repayment-type-result").val();
+                    var term = Evergage.cashDom("#term-result").val();
+                    var max2Year = Evergage.cashDom("#max-2-year-result").val();
+                    var max5Year = Evergage.cashDom("#max-5-year-result").val();
+
+                    Evergage.sendEvent({action: "BTL Calculator Submit", user: {attributes:{
+                    btlCalculatorDetails:{
+    ltdCompany:ltdCompany,
+    loanAmount:loanAmount,
+    monthlyRentalIncome:monthlyRentalIncome,
+    product:product,
+    repaymentType:repaymentType,
+    term:term,
+    max2Year:max2Year,
+    max5Year:max5Year
+}
+                    }}})
+                    })
+                ]
+            }, 
+
+
+            {
                 name: "residential_mortgage_products",
                 action: "Resdidential Mortgage Products",
                 isMatch: () => /\/intermediary\/residential-mortgage-products/.test(window.location.href)
@@ -37,7 +73,7 @@ Evergage.init({
 
             {
                 name: "residential_mortgage_criteria",
-                action: "Residential Mortgage Criteria/",
+                action: "Residential Mortgage Criteria",
                 isMatch: () => /\/intermediary\/residential-mortgage-criteria/.test(window.location.href)
                     
             }, 
