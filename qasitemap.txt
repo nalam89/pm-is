@@ -33,23 +33,37 @@ Evergage.init({
                 name: "btl_calculator",
                 action: "Buy To Let Calculator",
                 isMatch: () => /\/intermediary\/buy-to-let-calculator/.test(window.location.href),
-                listeners: [
-                    Evergage.listener("click", "#btn-calculate", () => {
-                    var ltdCompany = Evergage.cashDom("#limited-result").val();
+                
+                loanRequired: () =>{
+                return Evergage.util.resolveWhenTrue.bind(() => {
+                let loanRequired = Evergage.cashDom("#required-loan-amount-result").val();
+                if (loanRequired) {
+                return loanRequired;
+                } else {
+                return false;
+                }
+    });
+                }
+                
+
+
+                //listeners: [
+                    //Evergage.listener("click", "#btn-calculate", () => {
+                    //var ltdCompany = Evergage.cashDom("#limited-result").val();
                     //var mortgageType = Evergage.cashDom("#").val();
                     //var propertyValue = Evergage.cashDom("#broker_last_name").val();
-                    //var loanRequired = Evergage.cashDom("#required-loan-amount-result").val();
-                    var loanAmount = Evergage.cashDom("#required-loan-amount-result").val();
+                   
+                    
                     //var loanToValue = Evergage.cashDom("#broker_last_name").val();
-                    var monthlyRentalIncome = Evergage.cashDom("#monthly-rental-result").val();
-                    var product = Evergage.cashDom("#product-result").val();
-                    var repaymentType = Evergage.cashDom("#repayment-type-result").val();
-                    var term = Evergage.cashDom("#term-result").val();
-                    var max2Year = Evergage.cashDom("#max-2-year-result").val();
-                    var max5Year = Evergage.cashDom("#max-5-year-result").val();
+                    //var monthlyRentalIncome = Evergage.cashDom("#monthly-rental-result").val();
+                    //var product = Evergage.cashDom("#product-result").val();
+                    //var repaymentType = Evergage.cashDom("#repayment-type-result").val();
+                    //var term = Evergage.cashDom("#term-result").val();
+                    //var max2Year = Evergage.cashDom("#max-2-year-result").val();
+                    //var max5Year = Evergage.cashDom("#max-5-year-result").val();
 
-                    Evergage.sendEvent({action: "BTL Calculator Submit", user: {attributes:{
-                    btlCalculatorDetails:{
+                    //Evergage.sendEvent({action: "BTL Calculator Submit", user: {attributes:{
+                   /* btlCalculatorDetails:{
     ltdCompany:ltdCompany,
     loanAmount:loanAmount,
     monthlyRentalIncome:monthlyRentalIncome,
@@ -58,7 +72,7 @@ Evergage.init({
     term:term,
     max2Year:max2Year,
     max5Year:max5Year
-}
+}*/
                     }}})
                     })
                 ]
